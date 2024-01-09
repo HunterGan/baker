@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import NextAppDirEmotionCacheProvider from '@/shared/config/theme/EmotionCache';
-import theme from '@/shared/config/theme/theme';
+import NextAppDirEmotionCacheProvider from '@/_shared/config/theme/EmotionCache';
+import theme from '@/_shared/config/theme/theme';
 
 export default function ThemeRegistry({ children }: { children: React.ReactNode }) {
   return (

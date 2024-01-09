@@ -1,10 +1,8 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-import { Button } from '@mui/material'
+import Button from '@mui/material/Button'
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main>
       <Button
         sx={{
           margin: '20px'
