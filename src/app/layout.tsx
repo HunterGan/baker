@@ -1,10 +1,6 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
-import { ThemeProvider } from '@mui/material/styles';
-import ThemeRegistry from '@/shared/config/theme/ThemeRegistry';
-const inter = Inter({ subsets: ['latin'] })
+import ThemeRegistry from '@/_shared/config/theme/ThemeRegistry';
+import { MainLayout } from '@/_app/routes/layouts';
 
 export const metadata: Metadata = {
   title: 'BakerShop',
@@ -18,9 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body suppressHydrationWarning={true}>
         <ThemeRegistry>
-          {children}
+          <MainLayout>
+            {children}
+          </MainLayout>
         </ThemeRegistry>
       </body>
     </html>
