@@ -6,4 +6,5 @@ export const registerValidation = Joi.object({
     email: Joi.string().email().required(),
     password: Joi.string().required(),
     passwordConfirm: Joi.string().required(),
+    role_id: Joi.string().required(),
 })

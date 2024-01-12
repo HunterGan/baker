@@ -1,8 +1,12 @@
 import { Request, Response } from 'express';
 import { registerValidation } from '../validation/register.validation';
-import { UserRepository as repository } from '../db-connector';
+import { UserRepository as repository} from '../db-connector';
 import bcryptjs from 'bcryptjs'
 import { sign, verify } from 'jsonwebtoken';
+import { User } from '../entities/user.entity';
+
+const secret = process.env.SECRET_KEY || ''
+
 // REGISTER USER
 export const Register = async (req: Request, res: Response) => {
     const body = req.body;
@@ -24,7 +28,8 @@ export const Register = async (req: Request, res: Response) => {
         firstName: body.firstName,
         lastName: body.lastName,
         email: body.email,
-        password: await bcryptjs.hash(body.password, 10)
+        password: await bcryptjs.hash(body.password, 10),
+				role_id: "admin"
     })
 
     res.send(user);
@@ -39,7 +44,7 @@ export const Login = async (req: Request, res: Response) => {
 	)
 
 	// if does not exists break
-	if(!user){
+	if (!user) {
 		return res.status(404).send({
 			message: 'ERROR :: User does not exists!'
 		})
@@ -56,7 +61,7 @@ export const Login = async (req: Request, res: Response) => {
 	const token = sign(
     {
         id: user.id
-    }, 'secretkey'
+    }, secret
 	)
 	
 	res.cookie('jwt', token, {
@@ -66,26 +71,15 @@ export const Login = async (req: Request, res: Response) => {
 	})
 
 	res.send({
-    message: 'INFO :: Successfully logged in.'
+    message: token
 	})
 }
 
 export const AuthenticatedUser = async (req: Request, res: Response) => {
-	// get cookie from authenticated user
-	const jwt = req.cookies['jwt'];
-	// get user id from jwt
-	const payload: any = verify(jwt, 'secretkey')
-
-	if(!payload) {
-		return res.status(401).send({
-			message: 'ERROR :: User unauthenticated!'
-		})
-	}
-
 	// return user info  for user id
 	// @ts-ignore-next-line
-	const {password, ...user} = await repository.findOneBy(payload.id)
-
+	const {password, ...user} = req['user']
+	
 	res.send(user)
 }
 
@@ -95,4 +89,37 @@ export const Logout = async (req: Request, res: Response) => {
 	res.send({
 		message: 'INFO :: Successfully logged out.'
 	})
+}
+
+// UPDATE USER INFO
+export const UpdateUserInfo = async (req: Request, res: Response) => {
+	// @ts-ignore-next-line
+	const user = req['user'];
+
+	await repository.update(user.id, req.body)
+	// @ts-ignore-next-line
+	const { password, ...data } = await repository.findOneBy(user.id)
+
+	res.send({data})
+}
+
+// UPDATE USER PASSWORD
+export const UpdateUserPass = async (req: Request, res: Response) => {
+	// @ts-ignore-next-line
+	const user = req['user'];
+
+	// verify that password is confirmed
+	if (req.body.password !== req.body.passwordConfirm){
+			return res.status(400).send({
+					message: 'ERROR :: Passwords do not match!'
+			});
+	}
+
+	await repository.update(user.id, {
+			password: await bcryptjs.hash(req.body.password, 10)
+	})
+	// @ts-ignore-next-line
+	const { password, ...data } = await repository.findOneBy(user.id)
+
+	res.send({data})
 }
