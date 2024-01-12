@@ -1,21 +1,27 @@
+require('dotenv').config();
+
 import express, {Request, Response} from 'express'
 import "reflect-metadata"
 import cors from 'cors'
+import cookieParser from 'cookie-parser';
 import { routes } from './routes';
 // Import DB config
 import {dataSource} from "./db-connector";
 // Create connection with DB
 dataSource
 
-const expressPort = 8888;
+const expressPort = process.env.WEB_PORT || 8080;
+const apiUrl = process.env.API_URL;
+
 const app = express();
 
+app.use(cookieParser())
 // use json for API routes
 app.use(express.json());
 // cors for api address/port
 app.use(cors({
     credentials: true,
-    origin: ["http://localhost:8888"]
+    origin: apiUrl
 }));
 
 routes(app)
