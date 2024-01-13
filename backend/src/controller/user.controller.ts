@@ -34,13 +34,6 @@ export const GetUser = async (req: Request, res: Response) => {
   
   res.send(user)
 }
-// export const GetUser = async (req: Request, res: Response) => {
-// 	const {password, ...user} = await repository.findOne({
-// 			where: { id: req.params.id }, relations: ['role']
-// 	})
-	
-// 	res.send(user)
-// }
 
 export const CreateUser = async (req: Request, res: Response) => {
   const { role_id, password: pass, ...body } = req.body;
@@ -58,10 +51,26 @@ export const CreateUser = async (req: Request, res: Response) => {
 
 export const UpdateUser = async (req: Request, res: Response) => {
   const { role_id, ...body } = req.body;
+  const id = Number(req.params.id) 
 
-  const update = await repository.update(req.params.id, body)
+  await repository.update(req.params.id, {
+    ...body,
+    role: {
+      id: role_id
+    }
+  })
+
+  const data = await repository.findOne({
+    where: { id: id },
+    relations: ['role']
+})
+
+if (!data) {
+  return res.status(404).send({ message: 'User not found' });
+}
+const {password, ...user} = data
   
-  res.status(202).send(update)
+  res.status(202).send(user)
 }
 
 export const DeleteUser = async (req: Request, res: Response) => {
