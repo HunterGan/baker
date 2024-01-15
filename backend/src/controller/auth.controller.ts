@@ -2,8 +2,7 @@ import { Request, Response } from 'express';
 import { registerValidation } from '../validation/register.validation';
 import { UserRepository as repository} from '../db-connector';
 import bcryptjs from 'bcryptjs'
-import { sign, verify } from 'jsonwebtoken';
-import { User } from '../entities/user.entity';
+import { sign } from 'jsonwebtoken';
 
 const secret = process.env.SECRET_KEY || ''
 
