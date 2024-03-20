@@ -3,11 +3,11 @@ import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import routes from '@/_app/routes'
+import api_routes from '@/_app/routes'
 
 async function getMovies() {
-  console.log(routes.goods.get_goods)
-  const res = await fetch(routes.goods.get_goods)
+  console.log(api_routes.goods.get_goods)
+  const res = await fetch(api_routes.goods.get_goods)
   console.log('Is result OK: ', res.ok)
   if (!res.ok) {
     console.log(res.status)
@@ -20,13 +20,12 @@ async function getMovies() {
 
 export default async function Home() {
   const goods: {data: any[]} = await getMovies()
-  console.log("goods are: ", goods)
 
   return (
     <main>
       <Box
         sx={{
-          maxWidth: '800px',
+          width: '100%',
           flexDirection: 'column',
           display: 'flex',
           justifyContent: 'center'
@@ -38,12 +37,21 @@ export default async function Home() {
         textAlign: 'center',
         margin: '30px 0'
       }}>Список товаров:</Typography>
-      <Grid container spacing={2}>
-        {goods?.data.map((good, ind) => (
+      <Grid container spacing={2} 
+        sx={{
+          display: 'flex',
+          justifyContent: 'center'
+        }}
+      >
+        {(goods?.data || [{title: 'Hui', description: 'Stojak'}]).map((good, ind) => (
           <Grid
             key={ind}
             item
-            xs={6}
+            sm={12} md={6} lg={4}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center'
+           }}
           >
             <RecipeReviewCard
               title={good?.title as string}
