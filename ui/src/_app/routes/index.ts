@@ -2,7 +2,7 @@ const host = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 const port = process.env.NEXT_UI_PORT
 const baseUrl = `${host}:${port}/api`
 
-const routes = {
+const api_routes = {
   products: {
     get_products: `${baseUrl}/products`,
     get_product: `${baseUrl}/products`,
@@ -14,4 +14,9 @@ const routes = {
     get_goods:`${baseUrl}/goods`,
   }
 }
-export default routes
+
+const routes = {
+  
+}
+
+export default api_routes
