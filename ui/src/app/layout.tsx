@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
 import ThemeRegistry from '@/_shared/config/theme/ThemeRegistry';
 import { MainLayout } from '@/_app/routes/layouts';
+import { Inter } from "next/font/google";
 
 export const metadata: Metadata = {
   title: 'BakerShop',
   description: 'Project',
 }
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -14,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true} className={inter.className}>
         <ThemeRegistry>
           <MainLayout>
             {children}
