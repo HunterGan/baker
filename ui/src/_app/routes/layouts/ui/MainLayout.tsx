@@ -1,23 +1,9 @@
 import { FC, ReactNode } from "react";
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import styled from "@emotion/styled";
 import Header from "./Header";
 import styles from "@/_shared/lib/styles"; 
 import Footer from "./Footer";
-import { css } from '@emotion/react';
-import Image from "next/image";
+import Pic from '@/../public/bg_picture_left.png'
 
 interface IMainLayout {
  children: ReactNode
@@ -25,12 +11,11 @@ interface IMainLayout {
 
 const MainLayout: FC<IMainLayout> = ({ children }) => {
  return (
-    <Box sx={wrapperStyles}>
-
+    <Box sx={{...wrapperStyles}}>
       {/* BG images */}
       <Box sx={{...bottomLayerStyles}}>
         <Box sx={imageContainerStyles}>
-          <Box sx={imageWrapperStyles} style={{ backgroundImage: `url('/bg_picture_left.jpg')` }} />
+          <Box sx={imageWrapperStyles} style={{ backgroundImage: `url('bg_picture_left.png')` }} />
           <Box sx={imageWrapperStyles} style={{ backgroundImage: `url('/bg_picture_left.jpg')` }} />
         </Box>
       </Box>
@@ -41,7 +26,7 @@ const MainLayout: FC<IMainLayout> = ({ children }) => {
           zIndex: 100,
           display: 'flex',
           flexDirection: 'column',
-          minHeight: '100vh'
+          minHeight: '100vh',
         }}
       >
         <Header />
@@ -50,8 +35,8 @@ const MainLayout: FC<IMainLayout> = ({ children }) => {
           sx={{
             width: '100%',
             display: 'flex',
-            justifyContent: 'center',
-            flexGrow: 1
+            justifyContent: 'center', 
+            flexGrow: 1,
           }}
         >
           <Box sx={{...styles.adaptiveWidth}}>
@@ -70,14 +55,14 @@ const wrapperStyles = {
  margin: 0,
  padding: 0,
  boxSizing: 'border-box',
- width: '100%',
+ width: '100vw',
  minHeight: '100vh',
  display: 'flex',
  flexDirection: 'column',
- backgroundColor: styles.colors.bg_main,
+ backgroundColor: '#B9ACA2',
  position: 'relative',
  zIndex: 1,
- overflow: 'hidden'
+ overflow: 'hidden',
 };
 
 const bottomLayerStyles = {
@@ -98,15 +83,20 @@ const imageContainerStyles = {
  justifyContent: 'space-between',
  width: '100%',
  height: '100%',
+ backgroundColor: 'inherit',
+ '@media (min-width: 2200px)': {'& > :last-child': {display: 'none'}}
 };
 
 const imageWrapperStyles = {
- backgroundSize: 'cover',
+ backgroundSize: 'auto',
  backgroundPosition: 'center',
  backgroundRepeat: 'repeat-y',
  height: '2000px',
  width: '600px',
-
+'@media (min-width: 2200px)': {
+  width: '100%',
+  backgroundRepeat: 'repeat',
+},
 };
 
 export default MainLayout;
