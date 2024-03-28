@@ -4,7 +4,8 @@ const componentStyles = {
     bg_light: '#DACEC5',
     bg_badge: '#6A4D3E',
     text_primary: '#493931',
-    text_secondary: '#715A4E'
+    text_secondary: '#715A4E',
+    
   },
   adaptiveWidth: {
     width: {

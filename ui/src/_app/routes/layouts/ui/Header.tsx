@@ -1,22 +1,11 @@
-import { FC, ReactNode } from "react";
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import componentStyles from "@/_shared/lib/styles";
-import LoginButton from "./LoginButton";
 import styles from "@/_shared/lib/styles";
 import Link from "next/link";
 import CartButton from "./components/CartButton";
+import ProfileButton from "./components/ProfileButton";
+import StyledLink from "@/_shared/ui/common/StyledLink";
 
 interface IHeaderLink {
   title: string
@@ -30,11 +19,11 @@ const headerLinks:IHeaderLink[]  = [
   },
   {
     title: 'Акции',
-    href: '/'
+    href: '/actions'
   },
   {
     title: 'О нас',
-    href: '/'
+    href: '/about'
   }
 ]
 
@@ -59,7 +48,7 @@ const Header = () => {
       >
         {/* Logo box */}
         <Box>
-          <Link href="/"> {/* Wrap Avatar with Link for navigation */}
+          <Link href="/"> 
             <Avatar
               variant="square"
               alt="Logo"
@@ -81,21 +70,13 @@ const Header = () => {
           }}
         >
           {headerLinks.map(({href, title}) => (
-            <Link
-              key={title}
+            <StyledLink
+              key={href}
               href={href}
+              color="secondary"
             >
-              <Typography
-                sx={{
-                  fontWeight: 'semi-bold',
-                  fontSize: '27px',
-                  color: styles.colors.text_secondary,
-                  lineHeight: '30px'
-                }}
-              >
-                {title}
-              </Typography>
-            </Link>
+              {title}
+            </StyledLink>
           ))}
         </Box>
 
@@ -110,28 +91,11 @@ const Header = () => {
           <CartButton
             cartLength={Math.round(Math.random() * 10)}
           />
-
+          <ProfileButton/>
         </Box>
       </Box>
     </Box>
   )
 }
-// const CartButton: FC<CartButtonProps> = ({ cartLength }) => {
-//   return (
-//      <IconButton>
-//        <Badge
-//          badgeContent={cartLength}
-//          color="secondary"
-//          overlap="circular"
-//          anchorOrigin={{
-//            vertical: "bottom",
-//            horizontal: "right",
-//          }}
-//        >
-//          <ShoppingCartIcon />
-//        </Badge>
-//      </IconButton>
-//   );
-//  };
 
 export default Header
