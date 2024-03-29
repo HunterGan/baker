@@ -1,3 +1,4 @@
+import DeliveryConditions from "@/_app/routes/layouts/ui/components/DeliveryConditions";
 import Slider from "@/_app/routes/layouts/ui/components/Slider";
 import Box from "@mui/material/Box";
 import { FC } from "react";
@@ -13,6 +14,7 @@ const MainPage: FC = () => {
         }}
       >
         <Slider/>
+        <DeliveryConditions/>
       </Box>
     </>
   )
