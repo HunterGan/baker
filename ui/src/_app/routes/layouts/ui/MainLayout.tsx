@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Header from "./Header";
 import styles from "@/_shared/lib/styles"; 
 import Footer from "./Footer";
-import Pic from '@/../public/bg_picture_left.png'
+import bgimage from '@/../public/bg_picture_left.png'
 
 interface IMainLayout {
  children: ReactNode
@@ -11,14 +11,15 @@ interface IMainLayout {
 
 const MainLayout: FC<IMainLayout> = ({ children }) => {
  return (
-    <Box sx={{...wrapperStyles}}>
-      {/* BG images */}
-      <Box sx={{...bottomLayerStyles}}>
-        <Box sx={imageContainerStyles}>
-          <Box sx={imageWrapperStyles} style={{ backgroundImage: `url('bg_picture_left.png')` }} />
-          <Box sx={imageWrapperStyles} style={{ backgroundImage: `url('/bg_picture_left.jpg')` }} />
-        </Box>
-      </Box>
+    <Box sx={{...wrapperStyles,
+      backgroundImage: `url(${bgimage.src}), url(${bgimage.src})`,
+      backgroundPosition: 'left top, right top',
+      backgroundRepeat: 'repeat-y',
+      '@media (min-width: 2200px)': {
+        backgroundImage: `url(${bgimage.src})`,
+        backgroundRepeat: 'repeat',
+      },
+    }}>
 
       {/* Document */}
       <Box
@@ -59,44 +60,10 @@ const wrapperStyles = {
  minHeight: '100vh',
  display: 'flex',
  flexDirection: 'column',
- backgroundColor: '#B9ACA2',
+ backgroundColor: 'rgba(185, 172, 162, 0.8)',
  position: 'relative',
  zIndex: 1,
  overflow: 'hidden',
-};
-
-const bottomLayerStyles = {
- position: 'absolute',
- bottom: 0,
- left: 0,
- width: '100%',
- height: '100%',
- backgroundColor: 'none',
- display: 'flex',
- justifyContent: 'center',
- alignItems: 'center',
- zIndex: 10,
-};
-
-const imageContainerStyles = {
- display: 'flex',
- justifyContent: 'space-between',
- width: '100%',
- height: '100%',
- backgroundColor: 'inherit',
- '@media (min-width: 2200px)': {'& > :last-child': {display: 'none'}}
-};
-
-const imageWrapperStyles = {
- backgroundSize: 'auto',
- backgroundPosition: 'center',
- backgroundRepeat: 'repeat-y',
- height: '2000px',
- width: '600px',
-'@media (min-width: 2200px)': {
-  width: '100%',
-  backgroundRepeat: 'repeat',
-},
 };
 
 export default MainLayout;
