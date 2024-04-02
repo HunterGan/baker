@@ -1,8 +1,8 @@
-import { Box } from "@mui/material";
 import { FC } from "react";
+import Box from "@mui/material/Box";
 import styles from "@/_shared/lib/styles";
 
-const DeliveryConditions = () => {
+const DeliveryConditions: FC = () => {
   return (
     <Box
       sx={{

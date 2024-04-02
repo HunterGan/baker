@@ -1,23 +1,10 @@
-import { FC, ReactNode } from "react";
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import componentStyles from "@/_shared/lib/styles";
-import LoginButton from "./LoginButton";
-import styles from "@/_shared/lib/styles";
+import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-// import {Re as vkIcon} from '@/_shared/assets/svg/vk_logo'
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import LoginButton from "./LoginButton";
+import styles from "@/_shared/lib/styles";
 
 const mainLinks = {
   title: 'Основные:',
@@ -36,90 +23,88 @@ const iconsMap = {
   vk: `/vk_logo.svg`,
 }
 
-const Footer = () => {
+const Footer: FC = () => {
   return (
-      <Box 
+    <Box 
+      sx={{
+        background: styles.colors.bg_light,
+        width: '100%',
+        padding: '30px 0 20px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
+    >
+      <Box
         sx={{
-          background: styles.colors.bg_light,
-          width: '100%',
-          padding: '30px 0 20px',
+          ...styles.adaptiveWidth,
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+          flexDirection: 'column',
         }}
       >
         <Box
           sx={{
-            ...componentStyles.adaptiveWidth,
             display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
+            justifyContent: 'space-evenly'
           }}
         >
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-evenly'
-            }}
-          >
-            <LinkBox options={mainLinks}/>
-            <LinkBox options={aboutLinks}/>
-            <LinkBox options={contactLinks} icons/>
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              gap: '10px',
-              marginTop: '40px',
-              '& > a': {
-                textDecoration: 'none'
-              }
-            }}
-          >
-            <Link
-              href={'/'}
-            >
-              <Typography
-                sx={{
-                  fontWeight: 'medium',
-                  fontSize: '27px',
-                  color: styles.colors.text_primary,
-                  lineHeight: '30px'
-                }}
-              >
-                Политика конфиденциальности
-              </Typography>
-            </Link>
-            <Typography
-                sx={{
-                  fontWeight: 'medium',
-                  fontSize: '27px',
-                  color: styles.colors.text_primary,
-                  lineHeight: '30px'
-                }}
-              >
-                |
-              </Typography>
-            <Link
-              href={'/'}
-            >
-                            <Typography
-                sx={{
-                  fontWeight: 'medium',
-                  fontSize: '27px',
-                  color: styles.colors.text_primary,
-                  lineHeight: '30px'
-                }}
-              >
-                Договор оферты
-              </Typography>
-            </Link>
-            
-          </Box>
-          </Box>
-
+          <LinkBox options={mainLinks}/>
+          <LinkBox options={aboutLinks}/>
+          <LinkBox options={contactLinks} icons/>
         </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            gap: '10px',
+            marginTop: '40px',
+            '& > a': {
+              textDecoration: 'none'
+            }
+          }}
+        >
+          <Link
+            href={'/'}
+          >
+            <Typography
+              sx={{
+                fontWeight: 'medium',
+                fontSize: '27px',
+                color: styles.colors.text_primary,
+                lineHeight: '30px'
+              }}
+            >
+              Политика конфиденциальности
+            </Typography>
+          </Link>
+          <Typography
+            sx={{
+              fontWeight: 'medium',
+              fontSize: '27px',
+              color: styles.colors.text_primary,
+              lineHeight: '30px'
+            }}
+          >
+            |
+          </Typography>
+          <Link
+            href={'/'}
+          >
+            <Typography
+              sx={{
+                fontWeight: 'medium',
+                fontSize: '27px',
+                color: styles.colors.text_primary,
+                lineHeight: '30px'
+              }}
+            >
+              Договор оферты
+            </Typography>
+          </Link>
+        </Box>
+      </Box>
+    </Box>
   )
 }
 

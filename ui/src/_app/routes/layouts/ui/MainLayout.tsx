@@ -1,9 +1,9 @@
 import { FC, ReactNode } from "react";
 import Box from '@mui/material/Box';
 import Header from "./Header";
-import styles from "@/_shared/lib/styles"; 
 import Footer from "./Footer";
 import bgimage from '@/../public/bg_picture_left.png'
+import styles from "@/_shared/lib/styles"; 
 
 interface IMainLayout {
  children: ReactNode
@@ -11,16 +11,7 @@ interface IMainLayout {
 
 const MainLayout: FC<IMainLayout> = ({ children }) => {
  return (
-    <Box sx={{...wrapperStyles,
-      backgroundImage: `url(${bgimage.src}), url(${bgimage.src})`,
-      backgroundPosition: 'left top, right top',
-      backgroundRepeat: 'repeat-y',
-      '@media (min-width: 2200px)': {
-        backgroundImage: `url(${bgimage.src})`,
-        backgroundRepeat: 'repeat',
-      },
-    }}>
-
+    <Box sx={wrapperStyles}>
       {/* Document */}
       <Box
         sx={{
@@ -40,7 +31,7 @@ const MainLayout: FC<IMainLayout> = ({ children }) => {
             flexGrow: 1,
           }}
         >
-          <Box sx={{...styles.adaptiveWidth}}>
+          <Box sx={styles.adaptiveWidth}>
             {children}
           </Box>
         </Box>
@@ -58,12 +49,23 @@ const wrapperStyles = {
  boxSizing: 'border-box',
  width: '100vw',
  minHeight: '100vh',
+
  display: 'flex',
  flexDirection: 'column',
+
  backgroundColor: 'rgba(185, 172, 162, 0.8)',
+ backgroundImage: `url(${bgimage.src}), url(${bgimage.src})`,
+ backgroundPosition: 'left top, right top',
+ backgroundRepeat: 'repeat-y',
+
  position: 'relative',
  zIndex: 1,
  overflow: 'hidden',
+
+ '@media (min-width: 2200px)': {
+   backgroundImage: `url(${bgimage.src})`,
+   backgroundRepeat: 'repeat',
+ },
 };
 
 export default MainLayout;
