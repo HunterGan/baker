@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import { IconButton } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
 
 const data = [
   {

@@ -1,8 +1,6 @@
 "use client";
-
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
 import { FC, useState } from "react";
+import Button from "@mui/material/Button";
 import LoginDialog from "./LoginDialog";
 
 const LoginButton:FC = () => {

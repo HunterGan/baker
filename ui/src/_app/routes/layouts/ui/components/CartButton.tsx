@@ -1,8 +1,8 @@
 import { FC } from "react";
-import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
-import Box from "@mui/material/Box";
 import Image from 'next/image';
+import Box from "@mui/material/Box";
+import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
 import styles from "@/_shared/lib/styles";
 
 interface CartButtonProps {

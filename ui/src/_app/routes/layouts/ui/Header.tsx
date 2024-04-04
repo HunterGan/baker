@@ -1,11 +1,11 @@
+import { FC } from 'react';
+import Link from "next/link";
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
-import componentStyles from "@/_shared/lib/styles";
 import styles from "@/_shared/lib/styles";
-import Link from "next/link";
+import StyledLink from "@/_shared/ui/common/StyledLink";
 import CartButton from "./components/CartButton";
 import ProfileButton from "./components/ProfileButton";
-import StyledLink from "@/_shared/ui/common/StyledLink";
 
 interface IHeaderLink {
   title: string
@@ -27,7 +27,7 @@ const headerLinks:IHeaderLink[]  = [
   }
 ]
 
-const Header = () => {
+const Header: FC = () => {
   return (
     <Box 
       sx={{
@@ -41,7 +41,7 @@ const Header = () => {
     >
       <Box
         sx={{
-          ...componentStyles.adaptiveWidth,
+          ...styles.adaptiveWidth,
           display: 'flex',
           justifyContent: 'space-between',
         }}

@@ -1,14 +1,15 @@
 import { FC } from "react";
-import Box from "@mui/material/Box";
 import Image from 'next/image';
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import styles from "@/_shared/lib/styles";
-import { Button, Typography } from "@mui/material";
 
 interface ProfileButtonProps {
- cartLength?: number;
+
 }
 
-const ProfileButton: FC<ProfileButtonProps> = ({ cartLength }) => {
+const ProfileButton: FC<ProfileButtonProps> = () => {
 
   return (
     <Box
@@ -60,4 +61,4 @@ const ProfileButton: FC<ProfileButtonProps> = ({ cartLength }) => {
  );
 };
 
-export default ProfileButton;
+export default ProfileButton
