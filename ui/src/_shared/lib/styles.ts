@@ -1,11 +1,16 @@
-const componentStyles = {
+const styles = {
   colors: {
     bg_main: '#B9ACA2',
     bg_light: '#DACEC5',
     bg_badge: '#6A4D3E',
     text_primary: '#493931',
     text_secondary: '#715A4E',
-    
+    text_white: '#F4ECE2',
+    hover: {
+      text_primary: '#21312b',
+      text_secondary: '',
+      text_white: ''
+    }
   },
   adaptiveWidth: {
     width: {
@@ -20,4 +25,4 @@ const componentStyles = {
   },
 }
 
-export default componentStyles
+export default styles

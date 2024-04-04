@@ -1,26 +1,59 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import StyledLink from "@/_shared/ui/common/StyledLink";
 import LoginButton from "./LoginButton";
 import styles from "@/_shared/lib/styles";
 
-const mainLinks = {
-  title: 'Основные:',
-  links: ['Главная', 'Каталог']
-}
-const aboutLinks = {
-  title: 'Наша компания:',
-  links: ['О нас', 'Акции']
-}
-const contactLinks = {
-  title: 'Контакты:',
-  links: ['vk'],
+interface ILink {
+  name: string
+  href: string
+  icon?: string
 }
 
-const iconsMap = {
-  vk: `/vk_logo.svg`,
+interface ILinks {
+  title: string
+  links: ILink[]
+}
+
+const mainLinks: ILinks = {
+  title: 'Основные:',
+  links: [
+    {
+      name: 'Главная',
+      href: '/'
+    },
+    {
+      name: 'Каталог',
+      href: '/catalog'
+    }, 
+  ]
+}
+const aboutLinks: ILinks = {
+  title: 'Наша компания:',
+  links: [
+    {
+      name: 'О нас',
+      href: '/about'
+    },
+    {
+      name: 'Акции',
+      href: '/actions'
+    }, 
+  ]
+}
+
+const contactLinks: ILinks = {
+  title: 'Контакты:',
+  links: [
+    {
+      name: 'vk',
+      href: '/',
+      icon: '/vk_logo.svg'
+    },
+  ]
 }
 
 const Footer: FC = () => {
@@ -108,7 +141,7 @@ const Footer: FC = () => {
   )
 }
 
-const LinkBox = ({options, icons} : {options: typeof mainLinks, icons?: true }) => {
+const LinkBox = ({options, icons} : {options: ILinks, icons?: true }) => {
   return (
     <Box
       sx={{
@@ -130,34 +163,31 @@ const LinkBox = ({options, icons} : {options: typeof mainLinks, icons?: true }) 
       >
         {options.title}
       </Typography>
-      {options.links.map((link) => (
-        <Link
-          key={link}
-          href={'/'}
-      >
+      {options.links.map(({name, href, icon = ''}) => (
+        <React.Fragment
+          key={href}
+        >
         {icons
         ? 
-          <Box>
+          <Link
+            href={href}
+          >
             <Image
-              src={iconsMap.vk || '' }
-              alt={`${link} icon`}
+              src={icon}
+              alt={`${name} icon`}
               width={40}
               height={40}
             />
-          </Box>
+          </Link>
         :
-          <Typography
-            sx={{
-              fontWeight: 'medium',
-              fontSize: '27px',
-              color: styles.colors.text_secondary,
-              lineHeight: '30px'
-            }}
+          <StyledLink
+            href={href}
+            color="secondary"
           >
-            {link}
-          </Typography>
+            {name}
+          </StyledLink>
         }
-      </Link>
+        </React.Fragment>
       ))}
     </Box>
   )

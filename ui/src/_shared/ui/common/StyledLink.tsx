@@ -10,14 +10,21 @@ interface IStyledLink {
   href: string
   children: ReactNode
   fw?: string
-  color?: 'primary' | 'secondary'
-  size?: 'md' | 'sm'
-
+  color?: 'primary' | 'secondary' | 'white'
+  size?: 'md' | 'sm' | 'xs'
 }
+
+const sizes = {
+  xs: '18px',
+  sm: '25px',
+  md: '27px'
+}
+
 
 const StyledLink:FC<IStyledLink> = ({
   color = 'primary',
   size = 'md',
+  fw=500,
   href,
   children
 }) => {
@@ -30,9 +37,9 @@ const StyledLink:FC<IStyledLink> = ({
   >
     <Typography
       sx={{
-        fontWeight: 500,
-        fontSize: size === 'md' ? '27px' : '25px',
-        color: (color === 'primary' || isCurrentPath) ? styles.colors.text_primary : styles.colors.text_secondary,
+        fontWeight: fw,
+        fontSize: sizes[size],
+        color: styles.colors[`text_${color}`],
         lineHeight: '30px',
         textShadow: 'rgb(0, 0, 0, 15%) 2px 2px 2px',
 

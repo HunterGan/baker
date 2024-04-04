@@ -53,9 +53,10 @@ const wrapperStyles = {
  display: 'flex',
  flexDirection: 'column',
 
- backgroundColor: 'rgba(185, 172, 162, 0.8)',
+ backgroundColor: 'rgba(185, 172, 162, 1)',
  backgroundImage: `url(${bgimage.src}), url(${bgimage.src})`,
  backgroundPosition: 'left top, right top',
+ backgroundBlendMode: 'color-burn',
  backgroundRepeat: 'repeat-y',
 
  position: 'relative',
