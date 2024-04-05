@@ -1,10 +1,10 @@
 'use client'
 
-import { Typography } from "@mui/material"
-import Link from "next/link"
 import { FC, ReactNode } from "react"
-import styles from "@/_shared/lib/styles";
+import Link from "next/link"
 import { usePathname } from "next/navigation";
+import Typography from "@mui/material/Typography"
+import styles from "@/_shared/lib/styles";
 
 interface IStyledLink {
   href: string
