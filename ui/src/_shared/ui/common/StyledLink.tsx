@@ -1,10 +1,10 @@
 'use client'
 
-import { Typography } from "@mui/material"
-import Link from "next/link"
 import { FC, ReactNode } from "react"
-import styles from "@/_shared/lib/styles";
+import Link from "next/link"
 import { usePathname } from "next/navigation";
+import Typography from "@mui/material/Typography"
+import styles from "@/_shared/lib/styles";
 
 interface IStyledLink {
   href: string
@@ -39,7 +39,7 @@ const StyledLink:FC<IStyledLink> = ({
       sx={{
         fontWeight: fw,
         fontSize: sizes[size],
-        color: styles.colors[`text_${color}`],
+        color: isCurrentPath ? styles.colors.text_primary : styles.colors[`text_${color}`],
         lineHeight: '30px',
         textShadow: 'rgb(0, 0, 0, 15%) 2px 2px 2px',
 

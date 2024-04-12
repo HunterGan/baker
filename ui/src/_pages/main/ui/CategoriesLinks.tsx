@@ -1,24 +1,36 @@
 import { FC } from "react";
-import axios from "axios";
+// import axios from "axios";
 import Link from "next/link";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import routes from '@/_app/routes'
-import StyledLink from "@/_shared/ui/common/StyledLink";
+// import routes from '@/_app/routes'
+// import StyledLink from "@/_shared/ui/common/StyledLink";
 
-async function getCategories() {
-  try {
-    const categories = await axios.get(routes.categories.get_categories)
-    return categories.data
-  }
-  catch (e) {
-    return []
-  }
-}
+// async function getCategories() {
+//   try {
+//     const categories = await axios.get(routes.categories.get_categories)
+//     return categories.data
+//   }
+//   catch (e) {
+//     throw new Error('dd')
+//   }
+// }
 
-const CategoriesLinks: FC = async () => {
-  const links: any[] = await getCategories()
-  console.log('LINKS ARE: ', links)
+
+
+const CategoriesLinks = () => {
+  const links = [
+    {
+      name: '1',
+      href: '1'
+    },
+    {
+      name: '2',
+      href: '2'
+    }
+  ]
+  // const links: any[] = await getCategories()
+  // console.log('LINKS ARE: ', links)
 
   return (
     <Box
@@ -27,16 +39,14 @@ const CategoriesLinks: FC = async () => {
         alignItems: 'center',
         justifyContent: 'center',
         gap: '16px',
-        'a': {
-          textDecorationLine: 'none'
-        },
         margin: '32px 0'
       }}
     >
-     {links.map((link) => (
+     {links.map((link, ind) => (
       <Link
-        key={link.name}
+        key={link.name || ind}
         href={link.href}
+        style={{textDecorationLine: 'none'}}
       >
         <Typography
           sx={{
