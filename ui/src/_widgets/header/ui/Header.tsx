@@ -1,11 +1,12 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import Link from "next/link";
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import styles from "@/_shared/lib/styles";
 import StyledLink from "@/_shared/ui/common/StyledLink";
-import CartButton from "./components/CartButton";
-import ProfileButton from "./components/ProfileButton";
+import CartButton from "./CartButton";
+import ProfileButton from "./ProfileButton";
+import { styled } from '@mui/material';
 
 interface IHeaderLink {
   title: string
@@ -29,16 +30,7 @@ const headerLinks:IHeaderLink[]  = [
 
 const Header: FC = () => {
   return (
-    <Box 
-      sx={{
-        background: styles.colors.bg_light,
-        width: '100%',
-        height: '75px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}
-    >
+    <StyledHeader>
       <Box
         sx={{
           ...styles.adaptiveWidth,
@@ -94,8 +86,25 @@ const Header: FC = () => {
           <ProfileButton/>
         </Box>
       </Box>
-    </Box>
+    </StyledHeader>
   )
 }
+
+const StyledHeader = ({children}: {children: ReactNode}) => (
+  <Box
+    component={'header'}
+    sx={{
+      background: styles.colors.bg_light,
+      width: '100%',
+      height: '75px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }}
+  >
+    {children}
+  </Box>
+)
+
 
 export default Header

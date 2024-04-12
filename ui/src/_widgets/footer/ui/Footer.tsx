@@ -4,7 +4,6 @@ import Image from "next/image";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import StyledLink from "@/_shared/ui/common/StyledLink";
-import LoginButton from "./LoginButton";
 import styles from "@/_shared/lib/styles";
 
 interface ILink {

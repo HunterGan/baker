@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
+import { Header } from "@/_widgets/header";
+import { Footer } from "@/_widgets/footer";
 import Box from '@mui/material/Box';
-import Header from "./Header";
-import Footer from "./Footer";
 import bgimage from '@/../public/bg_picture_left.png'
 import styles from "@/_shared/lib/styles"; 
 
@@ -21,7 +21,7 @@ const MainLayout: FC<IMainLayout> = ({ children }) => {
           minHeight: '100vh',
         }}
       >
-        <Header />
+        <Header/>
 
         <Box
           sx={{
@@ -36,8 +36,7 @@ const MainLayout: FC<IMainLayout> = ({ children }) => {
           </Box>
         </Box>
 
-        <Footer />
-
+        <Footer/>
       </Box>
     </Box>
  );

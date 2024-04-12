@@ -5,6 +5,7 @@ const baseUrl = `${host}:${port}/api`
 const api_routes = {
   categories: {
     get_categories: `${baseUrl}/categories`,
+    get_category: `${baseUrl}/categories`,
   },
   products: {
     get_products: `${baseUrl}/products/get_list`,
@@ -14,7 +15,7 @@ const api_routes = {
     get_orders: `${baseUrl}/orders`,
   },
   goods: {
-    get_goods:`${baseUrl}/goods`,
+    get_goods:`${baseUrl}/categories`,
   }
 }
 

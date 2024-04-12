@@ -39,7 +39,7 @@ const StyledLink:FC<IStyledLink> = ({
       sx={{
         fontWeight: fw,
         fontSize: sizes[size],
-        color: styles.colors[`text_${color}`],
+        color: isCurrentPath ? styles.colors.text_primary : styles.colors[`text_${color}`],
         lineHeight: '30px',
         textShadow: 'rgb(0, 0, 0, 15%) 2px 2px 2px',
 
