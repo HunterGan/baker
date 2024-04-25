@@ -69,16 +69,23 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
           height: '70px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          padding: '0 22px',
         }}
       >
         <Typography>{`Цена: ${product.price} Руб.`}</Typography>
         <Button
+
           sx={{
-            padding: '7px 12px',
+            fontSize: '20px',
+            fontWeight: 'semibold',
+            padding: '0 12px',
             color: '#FBFBFB',
             backgroundColor: '#94847A',
             borderRadius: '7px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           В корзину

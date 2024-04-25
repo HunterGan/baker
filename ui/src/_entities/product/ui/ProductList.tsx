@@ -22,8 +22,12 @@ const ProductList: FC<ProductListProps> = async () => {
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
+        justifyContent: 'space-between',
         rowGap: '44px',
         columnGap: '44px',
+        '&>:last-child': {
+          justifySelf: 'stretch'
+        }
       }}
     >
       {products.map((product) => (
