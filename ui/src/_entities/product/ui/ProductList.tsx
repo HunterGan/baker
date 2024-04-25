@@ -1,9 +1,11 @@
 import { FC } from "react";
-import { CategoryType, ComboProduct, Product, getProducts } from "@/_entities/product";
+import {
+  Product,
+  getProducts,
+  CategoryType,
+  ComboProduct 
+} from "@/_entities/product";
 import Box from "@mui/material/Box";
-import RecipeReviewCard from "@/_shared/ui/common/Card/Card";
-import axios from "axios";
-import api from "../api/config/api";
 import ProductListItem from "./ProductListItem";
 
 interface ProductListProps {
@@ -19,7 +21,9 @@ const ProductList: FC<ProductListProps> = async () => {
         width: '100%',
         display: 'flex',
         flexWrap: 'wrap',
-        alignItems: 'center'
+        alignItems: 'center',
+        rowGap: '44px',
+        columnGap: '44px',
       }}
     >
       {products.map((product) => (

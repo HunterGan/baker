@@ -19,7 +19,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
   return (
     <Card
       sx={{
-        width: 330,
+        maxWidth: 330,
         height: 400,
         backgroundColor: styles.colors.bg_light,
         borderRadius: '7px',
