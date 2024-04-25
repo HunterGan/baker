@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import RecipeReviewCard from "@/_shared/ui/common/Card/Card";
 import axios from "axios";
 import api from "../api/config/api";
+import ProductListItem from "./ProductListItem";
 
 interface ProductListProps {
   category?: CategoryType | ComboProduct['category']
@@ -12,21 +13,17 @@ interface ProductListProps {
 const ProductList: FC<ProductListProps> = async () => {
   const products: Product[] = await getProducts()
 
-  console.log('Tock', products?.length)
-
   return (
     <Box
       sx={{
         width: '100%',
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'space-between',
         alignItems: 'center'
       }}
     >
-
       {products.map((product) => (
-        <RecipeReviewCard
+        <ProductListItem
           key={product.id}
           product={product}
         />

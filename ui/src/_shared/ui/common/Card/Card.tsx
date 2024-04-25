@@ -1,19 +1,13 @@
 'use client'
 
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import Box from '@mui/material/Box';
-import styles from '@/_shared/lib/styles';
 import { Product } from '@/_entities/product';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Button from '@mui/material/Button';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import styles from '@/_shared/lib/styles';
 
 interface ProductListItemProps {
   product: Product
@@ -67,9 +61,29 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
             width: '100%',
             borderBottom: '2px solid #493931',
             opacity: 0.6,
-            marginBottom: '30px'
           }}
         />
+        <Box
+          sx={{
+            height: '70px',
+            padding: '0 22px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}
+        >
+          <Typography>{`Цена: ${product.price} Руб.`}</Typography>
+          <Button
+            sx={{
+              padding: '7px 12px',
+              color: '#FBFBFB',
+              backgroundColor: '#94847A',
+              borderRadius: '7px',
+            }}
+          >
+            В корзину
+          </Button>
+        </Box>
     </Card>
   );
 }
