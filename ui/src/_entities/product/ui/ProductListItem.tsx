@@ -25,7 +25,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
         borderRadius: '7px',
       }}
     >
-      <Box sx={{padding: '8px'}}>
+      <Box sx={{padding: '7px'}}>
         <CardMedia
           component="img"
           height={212}
@@ -39,51 +39,51 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
         />
       </Box>
 
-        <Box
+      <Box
+        sx={{
+          padding: '0 22px',
+          marginTop: '9px',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '95px',
+          gap: '12px',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+          textOverflow: 'ellipsis',
+          fontWeight: 'semibold',
+          justifyContent: 'flex-start'
+        }}
+      >
+        <Typography sx={{fontSize: '24px', color: styles.colors.text_primary}}>{product.title}</Typography>
+        <Typography sx={{fontSize: '16px', color: styles.colors.text_secondary}}>{product.description}</Typography>
+      </Box>
+      <Box
+        sx={{
+          width: '100%',
+          borderBottom: '2px solid #493931',
+          opacity: 0.6,
+        }}
+      />
+      <Box
+        sx={{
+          height: '70px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}
+      >
+        <Typography>{`Цена: ${product.price} Руб.`}</Typography>
+        <Button
           sx={{
-            padding: '0 22px',
-            display: 'flex',
-            flexDirection: 'column',
-            height: '115px',
-            gap: '12px',
-            overflow: 'hidden',
-            whiteSpace: 'nowrap',
-            textOverflow: 'ellipsis',
-            fontWeight: 'semibold',
-            justifyContent: 'flex-start'
+            padding: '7px 12px',
+            color: '#FBFBFB',
+            backgroundColor: '#94847A',
+            borderRadius: '7px',
           }}
         >
-          <Typography sx={{fontSize: '24px', color: styles.colors.text_primary}}>{product.title}</Typography>
-          <Typography sx={{fontSize: '16px', color: styles.colors.text_secondary}}>{product.description}</Typography>
-        </Box>
-        <Box
-          sx={{
-            width: '100%',
-            borderBottom: '2px solid #493931',
-            opacity: 0.6,
-          }}
-        />
-        <Box
-          sx={{
-            height: '70px',
-            padding: '0 22px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between'
-          }}
-        >
-          <Typography>{`Цена: ${product.price} Руб.`}</Typography>
-          <Button
-            sx={{
-              padding: '7px 12px',
-              color: '#FBFBFB',
-              backgroundColor: '#94847A',
-              borderRadius: '7px',
-            }}
-          >
-            В корзину
-          </Button>
-        </Box>
+          В корзину
+        </Button>
+      </Box>
     </Card>
   );
 }
