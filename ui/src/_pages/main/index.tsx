@@ -4,6 +4,7 @@ import Slider from "./ui/Slider";
 import AboutBar from "./ui/AboutBar";
 import CategoriesLinks from "./ui/CategoriesLinks";
 import DeliveryConditions from "./ui/DeliveryConditions";
+import ProductList from "@/_entities/product/ui/ProductList";
 
 const MainPage: FC = () => {
   return (
@@ -18,8 +19,8 @@ const MainPage: FC = () => {
         <Slider/>
         <DeliveryConditions/>
         <CategoriesLinks/>
-        {/* goods */}
 
+        <ProductList/>
         <AboutBar/>
       </Box>
     </>
