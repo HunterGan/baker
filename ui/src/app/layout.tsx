@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Project',
 }
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export default function RootLayout({
   children,
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body suppressHydrationWarning={true} className={inter.className}>
         <ThemeRegistry>
           <MainLayout>

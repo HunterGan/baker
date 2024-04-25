@@ -14,8 +14,6 @@ interface ProductListItemProps {
 }
 
 const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
-  const [expanded, setExpanded] = React.useState(false);
-
   return (
     <Card
       sx={{
@@ -71,14 +69,13 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: '0 22px',
+          fontSize: '20px',
+          fontWeight: 'semibold',
         }}
       >
-        <Typography>{`Цена: ${product.price} Руб.`}</Typography>
+        <Typography sx={{color: styles.colors.text_primary, }}>{`Цена: ${product.price} Руб.`}</Typography>
         <Button
-
           sx={{
-            fontSize: '20px',
-            fontWeight: 'semibold',
             padding: '0 12px',
             color: '#FBFBFB',
             backgroundColor: '#94847A',
@@ -86,6 +83,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            textTransform: 'none',
           }}
         >
           В корзину
