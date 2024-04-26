@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
+import { Product } from "@/_entities/product";
 
 const data = [
   {
@@ -25,13 +26,12 @@ const data = [
 
 const SLIDER_INTERVAL = 10000
 
-const Slider = () => {
+const ProductSlider = ({product}: {product: Product | null}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null)
 
   const onNext = () => setCurrentSlide(currentSlide < data.length - 1 ? (currentSlide + 1) : 0)
   const onPrevious = () => setCurrentSlide(currentSlide > 0 ?  (currentSlide - 1) : (data.length - 1))
-  const onCustomSlide = (slide: number) => setCurrentSlide(slide)
 
   useEffect(() => {
     if (timerId) {
@@ -46,8 +46,8 @@ const Slider = () => {
   return (
     <Box
       sx={{
-        height: '450px',
-        margin: '45px 0 40px',
+        height: '462px',
+        width: '692px',
         position: 'relative',
       }}
     >
@@ -55,8 +55,7 @@ const Slider = () => {
       <Image
         src={data[currentSlide].image}
         alt=""
-        width={1078}
-        height={450}
+        fill={true}
       />
 
       {/* Arrows Left/Right*/}
@@ -64,7 +63,7 @@ const Slider = () => {
         onClick={onPrevious}
         sx={{
           ...arrowStyle,
-          left: '-80px',
+          left: '30px',
           backgroundImage: `url('/arrow_left.svg')`,
         }}
       />
@@ -72,36 +71,10 @@ const Slider = () => {
         onClick={onNext}
         sx={{
           ...arrowStyle,
-          right: '-80px',
+          right: '30px',
           backgroundImage: `url('/arrow_right.svg')`,
         }}
       />
-
-      {/* Set custom image - bottom points */}
-      <Box
-        sx={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          bottom: 20,
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '10px'
-        }}
-      >
-        {data.map((_, ind) => (
-          <IconButton
-            key={ind}
-            onClick={() => onCustomSlide(ind)}
-            sx={{
-              height: '22px',
-              width: '22px',
-              backgroundImage: `url('/slider_point_${ind === currentSlide ? 'checked' : 'unchecked'}.svg')`,
-              backgroundSize: 'cover',
-            }}
-          />
-        ))}
-      </Box>
     </Box>
   )
 };
@@ -112,11 +85,11 @@ const arrowStyle = {
   transform: 'translateY(-50%)',
   backgroundImage: `url('/arrow_right.svg')`,
   backgroundSize: 'cover',
-  width: '50px',
-  height: '50px',
+  width: '40px',
+  height: '40px',
   padding: 0,
   border: 'none',
   backgroundColor: '#DACEC5',
 }
 
-export default Slider;
+export default ProductSlider;

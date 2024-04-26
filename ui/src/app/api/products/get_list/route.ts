@@ -5,10 +5,10 @@ const products: Product[] = [
   {
     id: '1',
     category: 'bakery',
-    title: 'Cake',
-    description: 'Very tasty cake',
+    title: 'Хлеб ржаной',
+    description: 'Служит источником углеводов и является основным компонентом многих блюд',
     img: './paella.jpg',
-    price: 100,
+    price: 70,
     available: true,
 
   },
