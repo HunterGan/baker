@@ -3,13 +3,16 @@ const styles = {
     bg_main: '#B9ACA2',
     bg_light: '#DACEC5',
     bg_badge: '#6A4D3E',
+    bg_button_light: '#94847A',
     text_primary: '#493931',
     text_secondary: '#715A4E',
     text_white: '#F4ECE2',
+    text_button: '#FBFBFB',
+    stroke: '#493931',
     hover: {
       text_primary: '#21312b',
       text_secondary: '',
-      text_white: ''
+      text_white: '#00aaa'
     }
   },
   adaptiveWidth: {

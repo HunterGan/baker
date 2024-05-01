@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 const baseUrl = 'catalog'
 
-const categories = [
+const categoriesLinks = [
   {
     name: 'Популярное',
     href: `${baseUrl}`
@@ -21,7 +21,7 @@ const categories = [
   },
   {
     name: 'Комбо-наборы',
-    href: `${baseUrl}/combo`
+    href: `${baseUrl}/combos`
   },
   {
     name: 'Гарниры',
@@ -45,19 +45,11 @@ const categories = [
   },
 ]
 
-
-// FETCH ALL CATEGORIES
-export const GET = async (req: NextRequest) => {
-  const { searchParams } = new URL(req.url);
-  
-  const category = searchParams.get("category");
-
+export const GET = async () => {  
   try {
-    if (category) {
-      return new NextResponse(JSON.stringify(category), { status: 200 });
+    if (categoriesLinks) {
+      return new NextResponse(JSON.stringify(categoriesLinks), { status: 200 });
     }
-    
-    return new NextResponse(JSON.stringify(categories), { status: 200 });
   } catch (err) {
     console.log(err);
     return new NextResponse(

@@ -1,11 +1,14 @@
-import { FC } from "react";
 import Box from "@mui/material/Box";
 import Slider from "./ui/Slider";
 import AboutBar from "./ui/AboutBar";
 import CategoriesLinks from "./ui/CategoriesLinks";
 import DeliveryConditions from "./ui/DeliveryConditions";
+import { ProductList, getCategoriesLinks, getProducts } from "@/_entities/product";
 
-const MainPage: FC = () => {
+export default async function MainPage() {
+  const products = await getProducts()
+  const categoriesLinks = await getCategoriesLinks()
+
   return (
     <>
       <Box
@@ -17,13 +20,12 @@ const MainPage: FC = () => {
       >
         <Slider/>
         <DeliveryConditions/>
-        <CategoriesLinks/>
-        {/* goods */}
 
+        <CategoriesLinks links={categoriesLinks}/>
+        <ProductList products={products}/>
+        
         <AboutBar/>
       </Box>
     </>
   )
 }
-
-export default MainPage
