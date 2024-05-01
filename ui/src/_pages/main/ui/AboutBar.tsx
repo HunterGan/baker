@@ -52,6 +52,7 @@ const AboutBar: FC = () => {
             key={str}
             sx={{
               fontSize: '20px',
+              fontWeight: 500,
               color: styles.colors.text_primary,
               lineHeight: '22px',
             }}

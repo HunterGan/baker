@@ -62,9 +62,9 @@ const DeliveryConditions: FC = () => {
           >
             <Typography
               sx={{
-                fontWeight: 'bold',
-                fontSize: '17px',
-                lineHeight: '17px',
+                fontWeight: 500,
+                fontSize: '18px',
+                lineHeight: '18px',
                 color: styles.colors.text_primary,
                 textDecoration: 'none'
               }}

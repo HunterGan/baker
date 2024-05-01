@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import { Product } from "@/_entities/product";
+import styles from "@/_shared/lib/styles";
 
 const data = [
   {
@@ -41,6 +42,7 @@ const ProductSlider = ({product}: {product: Product | null}) => {
     setTimerId(timer)
 
     return () => clearTimeout(timer);
+    // eslint-disable-next-line
   }, [currentSlide]);
 
   return (
@@ -89,7 +91,7 @@ const arrowStyle = {
   height: '40px',
   padding: 0,
   border: 'none',
-  backgroundColor: '#DACEC5',
+  backgroundColor: styles.colors.bg_light,
 }
 
 export default ProductSlider;

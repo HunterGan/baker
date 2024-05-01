@@ -1,11 +1,12 @@
-export type CategoryType = 'garnish' | 'second' | 'salad' | 'soup' | 'bakery' | 'sauce' | 'drinks' | 'dishes'
+export type CategoryType = 'garnish' | 'second' | 'salad' | 'soup' | 'bakery' | 'sauce' | 'drinks' | 'dishes' | 'combo'
 
 export interface SingleProduct {
+  type: Exclude<CategoryType, 'combo'>
   id: string
   title: string
   price: number
   img: string
-  category: CategoryType
+  category: Exclude<CategoryType, 'combo'>
   description: string
 
   options?: {
@@ -16,7 +17,8 @@ export interface SingleProduct {
   available?: boolean
 }
 
-export interface ComboProduct extends Omit<SingleProduct, 'options' | 'category'> {
+export interface ComboProduct extends Omit<SingleProduct, 'options' | 'category' | 'type'> {
+  type: 'combo'
   category: 'combo'
   products: SingleProduct[]
 }

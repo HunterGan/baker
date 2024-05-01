@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
+import styles from "@/_shared/lib/styles";
 
 const data = [
   {
@@ -41,6 +42,7 @@ const Slider = () => {
     setTimerId(timer)
 
     return () => clearTimeout(timer);
+    // eslint-disable-next-line
   }, [currentSlide]);
 
   return (
@@ -112,11 +114,11 @@ const arrowStyle = {
   transform: 'translateY(-50%)',
   backgroundImage: `url('/arrow_right.svg')`,
   backgroundSize: 'cover',
-  width: '50px',
-  height: '50px',
+  width: '60px',
+  height: '60px',
   padding: 0,
   border: 'none',
-  backgroundColor: '#DACEC5',
+  backgroundColor: styles.colors.bg_light,
 }
 
 export default Slider;

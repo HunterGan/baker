@@ -15,6 +15,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Product } from "@/_entities/product";
 import { ProductSlider } from "@/_features/product-slider";
 import { useProductDialog } from "@/_entities/product/ui/context/DialogContext";
+import styles from "@/_shared/lib/styles";
 
 interface IProductDialog {
   open?: boolean
@@ -37,7 +38,7 @@ const ProductDialog:FC<IProductDialog> = () => {
           padding: '20px',
           borderRadius: '15px',
           maxWidth: '732px',
-          backgroundColor: '#DACEC5',
+          backgroundColor: styles.colors.bg_light,
           position: 'relative',
           overflow: 'visible',
         }

@@ -6,6 +6,11 @@ const host = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 const port = process.env.NEXT_UI_PORT
 const baseUrl = `${host}:${port}/api`
 
+export interface CategoryLink {
+  name: string
+  href: string
+}
+
 const getProducts = async (category?: CategoryType | ComboProduct['category']): Promise<Product[]> => {
   const postfix = category ? `/${category}` : ''
 
@@ -19,6 +24,18 @@ const getProducts = async (category?: CategoryType | ComboProduct['category']): 
   }
 }
 
+const getCategoriesLinks = async (): Promise<CategoryLink[]> => {
+  try {
+    const response = await axios.get(`${baseUrl}/${api.getCategoriesLinks}`)
+
+    return response.data
+  } catch(e) {
+    console.log(e)
+    return []
+  }
+}
+
 export {
   getProducts,
+  getCategoriesLinks,
 }

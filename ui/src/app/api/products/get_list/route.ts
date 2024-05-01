@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const products: Product[] = [
   {
+    type: 'bakery',
     id: '1',
     category: 'bakery',
     title: 'Хлеб ржаной',
@@ -13,6 +14,7 @@ const products: Product[] = [
 
   },
   {
+    type: 'bakery',
     id: '2',
     category: 'bakery',
     title: 'Cake',
@@ -23,6 +25,7 @@ const products: Product[] = [
 
   },
   {
+    type: 'bakery',
     id: '3',
     category: 'bakery',
     title: 'Cake',
@@ -33,6 +36,7 @@ const products: Product[] = [
 
   },
   {
+    type: 'bakery',
     id: '4',
     category: 'bakery',
     title: 'Cake',
@@ -43,6 +47,7 @@ const products: Product[] = [
 
   },
   {
+    type: 'bakery',
     id: '5',
     category: 'bakery',
     title: 'Cake',

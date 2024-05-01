@@ -1,7 +1,5 @@
-import { FC } from "react";
 import {
   Product,
-  getProducts,
   CategoryType,
   ComboProduct 
 } from "@/_entities/product";
@@ -10,12 +8,7 @@ import ProductListItem from "./ProductListItem";
 import { ProductDialog } from "@/_widgets/dialogs/product-card";
 import { ProductDialogProvider } from "./context/DialogContext";
 
-interface ProductListProps {
-  category?: CategoryType | ComboProduct['category']
-}
-
-const ProductList: FC<ProductListProps> = async () => {
-  const products: Product[] = await getProducts()
+export default function ProductList({products}: {products: Product[]}) {
 
   return (
     <ProductDialogProvider>
@@ -43,7 +36,3 @@ const ProductList: FC<ProductListProps> = async () => {
     </ProductDialogProvider>
   )
 }
-
-
-
-export default ProductList

@@ -46,22 +46,22 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
             display: 'flex',
             flexDirection: 'column',
             height: '95px',
-            gap: '12px',
+            gap: '8px',
             overflow: 'hidden',
             whiteSpace: 'nowrap',
             textOverflow: 'ellipsis',
-            fontWeight: 'semibold',
+            fontWeight: 500,
             justifyContent: 'flex-start'
           }}
         >
-          <Typography sx={{fontSize: '24px', color: styles.colors.text_primary}}>{product.title}</Typography>
-          <Typography sx={{textWrap: 'wrap', fontSize: '16px', color: styles.colors.text_secondary}}>{product.description}</Typography>
+          <Typography fontWeight={500} sx={{fontSize: '24px', color: styles.colors.text_primary, lineHeight: '100%'}}>{product.title.toUpperCase()}</Typography>
+          <Typography fontWeight={500} sx={{textWrap: 'wrap', fontSize: '16px', color: styles.colors.text_secondary, lineHeight: '100%'}}>{product.description}</Typography>
         </Box>
       </OpenDialogLayout>
       <Box
         sx={{
           width: '100%',
-          borderBottom: '2px solid #493931',
+          borderBottom: `2px solid ${styles.colors.stroke}`,
           opacity: 0.6,
         }}
       />
@@ -72,16 +72,16 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: '0 22px',
-          fontSize: '20px',
-          fontWeight: 'semibold',
+
         }}
       >
-        <Typography sx={{color: styles.colors.text_primary, }}>{`Цена: ${product.price} Руб.`}</Typography>
+        <Typography fontWeight={500} sx={{color: styles.colors.text_primary, fontSize: '20px'}}>{`Цена: ${product.price} Руб.`}</Typography>
         <Button
           sx={{
             padding: '0 12px',
-            color: '#FBFBFB',
-            backgroundColor: '#94847A',
+            height: '34px',
+            color: styles.colors.text_button,
+            backgroundColor: styles.colors.bg_button_light,
             borderRadius: '7px',
             display: 'flex',
             alignItems: 'center',
@@ -89,7 +89,12 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
             textTransform: 'none',
           }}
         >
-          В корзину
+          <Typography
+            fontWeight={500}
+            fontSize={20}
+          >
+            В корзину
+          </Typography>
         </Button>
       </Box>
     </Card>

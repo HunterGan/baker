@@ -5,6 +5,7 @@ const api = {
   getProducts: `${PRODUCTS_URL}/get_list`,
   getCategory: `${PRODUCTS_URL}/get_category`,
   getCategories: `${PRODUCTS_URL}/get_categories`,
+  getCategoriesLinks: `${PRODUCTS_URL}/get_categories_links`,
 }
 
 export default api
