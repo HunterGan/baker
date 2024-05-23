@@ -15,14 +15,18 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
+    "@tanstack/react-query": "^5.36.2",
     "axios": "^1.6.5",
     "next": "latest",
+    "next-auth": "^4.24.7",
     "react": "latest",
     "react-dom": "latest",
-    "react-imask": "^7.4.0"
+    "react-imask": "^7.4.0",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
+    "@tanstack/eslint-plugin-query": "^5.35.6",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
