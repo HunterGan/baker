@@ -13,6 +13,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import { signIn } from "next-auth/react";
 
 interface ILoginDialog {
   open: boolean
@@ -47,15 +48,54 @@ const TextMaskCustom = React.forwardRef<HTMLInputElement, CustomProps>(
 
 const LoginDialog:FC<ILoginDialog> = ({open, onClose}) => {
   const [phone, setPhone] = useState({
-    textmask: '(9  )     -   -   ',
+    text_mask: '(9  )     -   -   ',
     isValid: false
   })
+  const [code, setCode] = useState('');
+  const [step, setStep] = useState(1);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPhone({
-      textmask: event.target.value,
+      text_mask: event.target.value,
       isValid: pattern.test(event.target.value),
     });
+  };
+  const handleSendCode = async () => {
+    const response = await fetch('/api/send-sms', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ phone: phone.text_mask }),
+    });
+
+    if (response.ok) {
+      setStep(2);
+    }
+  };
+
+  const handleVerifyCode = async () => {
+    const response = await fetch('/api/verify-code', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ phone: phone.text_mask, code }),
+    });
+
+    if (response.ok) {
+      const result = await signIn('credentials', {
+        redirect: false,
+        phone: phone.text_mask,
+        code,
+      });
+
+      if (result?.ok) {
+        onClose();
+      } else {
+        // Handle error
+      }
+    }
   };
 
   return (
@@ -123,7 +163,7 @@ const LoginDialog:FC<ILoginDialog> = ({open, onClose}) => {
         >
           <Input
             startAdornment={"+7"}
-            value={phone.textmask}
+            value={phone.text_mask}
             onChange={handleChange}
             name="textmask"
             id="formatted-text-mask-input"
@@ -145,7 +185,7 @@ const LoginDialog:FC<ILoginDialog> = ({open, onClose}) => {
       >
         <Button
           type="submit"
-          onClick={() => console.log(phone.textmask)}
+          onClick={() => console.log(phone.text_mask)}
           disabled={!phone.isValid}
           variant="contained"
           size="large"

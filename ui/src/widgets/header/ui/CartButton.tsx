@@ -1,16 +1,17 @@
+"use client"
+
 import { FC } from "react";
 import Image from 'next/image';
 import Box from "@mui/material/Box";
 import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import styles from "@/shared/lib/styles";
+import { useCartStore } from "@/entities/store";
 
-interface CartButtonProps {
- cartLength: number;
-}
+const CartButton: FC = () => {
+  const { totalItems, cartItems } = useCartStore()
 
-const CartButton: FC<CartButtonProps> = ({ cartLength }) => {
- return (
+  return (
     <Box
       sx={{
         display: 'flex',
@@ -18,10 +19,12 @@ const CartButton: FC<CartButtonProps> = ({ cartLength }) => {
         justifyContent: 'center'
       }}
     >
-      <IconButton>
+      <IconButton
+        onClick={() => console.log(cartItems)}
+      >
         <Badge
-          badgeContent={cartLength}
-          invisible={!(cartLength >= 0)}
+          badgeContent={totalItems}
+          invisible={!(totalItems >= 0)}
           overlap="circular"
           anchorOrigin={{
             vertical: "bottom",

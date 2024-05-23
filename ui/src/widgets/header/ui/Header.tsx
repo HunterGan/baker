@@ -6,7 +6,6 @@ import styles from "@/shared/lib/styles";
 import StyledLink from "@/shared/ui/common/StyledLink";
 import CartButton from "./CartButton";
 import ProfileButton from "./ProfileButton";
-import { styled } from '@mui/material';
 
 interface IHeaderLink {
   title: string
@@ -80,9 +79,7 @@ const Header: FC = () => {
             gap: '20px'
           }}
         >
-          <CartButton
-            cartLength={Math.round(Math.random() * 10)}
-          />
+          <CartButton/>
           <ProfileButton/>
         </Box>
       </Box>

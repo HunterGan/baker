@@ -28,6 +28,7 @@ const data = [
 const SLIDER_INTERVAL = 10000
 
 const ProductSlider = ({product}: {product: Product | null}) => {
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null)
 
@@ -55,7 +56,7 @@ const ProductSlider = ({product}: {product: Product | null}) => {
     >
       {/* Slider bg image */}
       <Image
-        src={data[currentSlide].image}
+        src={product?.img || ''}
         alt=""
         fill={true}
       />

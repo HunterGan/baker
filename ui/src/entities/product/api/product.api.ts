@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CategoryType, ComboProduct, Product } from "../model/types";
+import { CategoryType, Product } from "../model/types";
 import api from "./config/api";
 
 const host = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
@@ -11,7 +11,7 @@ export interface CategoryLink {
   href: string
 }
 
-const getProducts = async (category?: CategoryType | ComboProduct['category']): Promise<Product[]> => {
+const getProducts = async (category?: CategoryType): Promise<Product[]> => {
   const postfix = category ? `/${category}` : ''
 
   try {

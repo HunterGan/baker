@@ -1,7 +1,5 @@
 import {
   Product,
-  CategoryType,
-  ComboProduct 
 } from "@/entities/product";
 import Box from "@mui/material/Box";
 import ProductListItem from "./ProductListItem";

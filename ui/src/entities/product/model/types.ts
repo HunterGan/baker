@@ -1,12 +1,11 @@
-export type CategoryType = 'garnish' | 'second' | 'salad' | 'soup' | 'bakery' | 'sauce' | 'drinks' | 'dishes' | 'combo'
+export type CategoryType = 'garnish' | 'second' | 'salad' | 'soup' | 'bakery' | 'sauce' | 'drinks' | 'dishes' | 'combo' | 'addition'
 
-export interface SingleProduct {
-  type: Exclude<CategoryType, 'combo'>
+export interface Product {
+  type: CategoryType
   id: string
   title: string
   price: number
   img: string
-  category: Exclude<CategoryType, 'combo'>
   description: string
 
   options?: {
@@ -14,18 +13,7 @@ export interface SingleProduct {
     kalories?: string
     ingredients?: string[]
   }
+  products?: Product[]
+  additions?: Product[]
   available?: boolean
-}
-
-export interface ComboProduct extends Omit<SingleProduct, 'options' | 'category' | 'type'> {
-  type: 'combo'
-  category: 'combo'
-  products: SingleProduct[]
-}
-
-export type Product = ComboProduct | SingleProduct
-
-export interface Cart {
-  products: Product[]
-  updated_at: string
 }

@@ -31,7 +31,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({product}) => {
             height={212}
             width={314}
             image={product.img}
-            alt={`Image of ${product.title} from category ${product.category}`}
+            alt={`Image of ${product.title} from category ${product.type}`}
             sx={{
               marginBottom: '6px',
               borderRadius: '7px',
